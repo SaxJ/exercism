@@ -14,4 +14,4 @@ data Color =
   deriving (Eq, Show, Read, Enum)
 
 value :: [Color] -> Int
-value cs = foldl (\acc (a, b) -> acc + 10 ^ a * b) 0 $ zip [0..] $ reverse $ map fromEnum cs
+value = sum . (zipWith (\a b -> 10 ^ a * fromEnum b) [0..]) . reverse 
